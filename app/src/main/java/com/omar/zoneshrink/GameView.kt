@@ -529,7 +529,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         }
     }
 
-    private fun draw(c: Canvas) {
+    private fun drawGame(c: Canvas) {
         val w = c.width.toFloat()
         val h = c.height.toFloat()
         c.drawColor(Color.rgb(20, 30, 20))
@@ -810,7 +810,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             }
             if (c != null) {
                 try {
-                    draw(c)
+                    drawGame(c)
                 } finally {
                     holder.unlockCanvasAndPost(c)
                 }
