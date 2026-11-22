@@ -243,6 +243,7 @@ class GameRenderer(private val game: Game) : GLSurfaceView.Renderer {
 
         drawGround()
         drawObstacles()
+        drawPickups()
         for (b in game.bots) if (b.alive) drawEntity(b)
         if (p.alive) drawEntity(p)
         drawBullets()
@@ -380,7 +381,6 @@ class GameRenderer(private val game: Game) : GLSurfaceView.Renderer {
         }
     }
 
-    // pickups are drawn together with solid objects, before translucent beams
     private fun drawPickups() {
         val maxD2 = 90f * 90f
         val t = game.time
@@ -423,13 +423,5 @@ class GameRenderer(private val game: Game) : GLSurfaceView.Renderer {
             n++
         }
         markCount = n
-    }
-
-    init {
-        // keep pickups drawn with the solid pass
-    }
-
-    private fun renderPickupsHook() {
-        drawPickups()
     }
 }
